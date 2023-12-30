@@ -1,19 +1,26 @@
-import { Card, CardBody, Flex } from "@chakra-ui/react";
+import { Card, CardBody, Flex, GridItem } from "@chakra-ui/react";
 import "../../App.css";
+import ReactTimeAgo from "react-time-ago";
 
-function Cards({ title, comments, user, time, points }) {
+function Cards({ key, data }) {
+  const date = new Date(data.created_at);
   return (
-    <Card className="cards" width={"100%"}>
-      <CardBody className="cardbody">
-        <p className="cardtitle">{title}</p>
-        <Flex gap={0} justifyContent={"space-evenly"} alignItems={"center"}>
-          <p className="cardpoints">{points} points </p>
-          <p className="carduser"> by {user} </p>
-          <p className="cardtime"> 3 hours ago </p>
-          <p className="cardcomments"> 22 comments</p>
-        </Flex>
-      </CardBody>
-    </Card>
+    <GridItem key={key}>
+      <Card className="cards" width={"100%"}>
+        <CardBody className="cardbody">
+          <p className="cardtitle">{data.title}</p>
+          <Flex gap={0} justifyContent={"space-evenly"} alignItems={"center"}>
+            <p className="cardpoints"> {data.points} points </p>
+            <p className="carduser"> by {data.author}</p>
+            <p className="cardtime">
+              {" "}
+              <ReactTimeAgo date={date} locale="en-US" />
+            </p>
+            <p className="cardcomments"> {data.num_comments} comments</p>
+          </Flex>
+        </CardBody>
+      </Card>
+    </GridItem>
   );
 }
 
