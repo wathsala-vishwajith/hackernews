@@ -1,14 +1,15 @@
 import { Card, CardBody, Flex } from "@chakra-ui/react";
+import "../../App.css";
 
-function Cards() {
+function Cards({ title, comments, user, time, points }) {
   return (
-    <Card className="cards" width={"fit-content"}>
+    <Card className="cards" width={"100%"}>
       <CardBody className="cardbody">
-        <p className="cardtitle">The art of high performance computing</p>
-        <Flex justifyContent={"space-between"} alignItems={"center"}>
-          <p className="cardpoints">181 points</p>
-          <p className="carduser"> by rramadass</p>
-          <p className="cardtime"> 3 hours ago</p>
+        <p className="cardtitle">{title}</p>
+        <Flex gap={0} justifyContent={"space-evenly"} alignItems={"center"}>
+          <p className="cardpoints">{points} points </p>
+          <p className="carduser"> by {user} </p>
+          <p className="cardtime"> 3 hours ago </p>
           <p className="cardcomments"> 22 comments</p>
         </Flex>
       </CardBody>
