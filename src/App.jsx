@@ -13,7 +13,7 @@ function App() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "http://hn.algolia.com/api/v1/search?tags=front_page"
+          "https://hn.algolia.com/api/v1/search?tags=front_page"
         );
         setPageItems(res.data.hits);
       } catch (error) {
